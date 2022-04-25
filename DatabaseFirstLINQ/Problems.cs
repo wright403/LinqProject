@@ -101,6 +101,13 @@ namespace DatabaseFirstLINQ
         {
             // Write a LINQ query that gets all of the users who registered AFTER 2016 and BEFORE 2018
             // Then print each user's email and registration date to the console.
+            var users = _context.Users;
+            var tweenUsers = users.Where(u => u.RegistrationDate > DateTime.Parse("2016-01-01") && u.RegistrationDate < DateTime.Parse("2018-01-01"));
+            foreach (User user in tweenUsers)
+            {
+                Console.WriteLine($"TweenUsers:  {user.Email}  {user.RegistrationDate}");
+            }
+
         }
 
         // <><><><><><><><> R Actions (Read) with Foreign Keys <><><><><><><><><>
