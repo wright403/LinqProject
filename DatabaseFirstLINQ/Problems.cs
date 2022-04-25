@@ -25,7 +25,7 @@ namespace DatabaseFirstLINQ
             //ProblemEight();
             //ProblemNine();
             //ProblemTen();
-            //ProblemEleven();
+            ProblemEleven();
             //ProblemTwelve();
             //ProblemThirteen();
             //ProblemFourteen();
@@ -35,6 +35,7 @@ namespace DatabaseFirstLINQ
             //ProblemEighteen();
             //ProblemNineteen();
             //ProblemTwenty();
+            BonusOne();
         }
 
         // <><><><><><><><> R Actions (Read) <><><><><><><><><>
@@ -299,11 +300,18 @@ namespace DatabaseFirstLINQ
             Console.WriteLine("Enter password: ");
             string password = Console.ReadLine();
 
-            var users = _context.Users;
+            var users = _context.Users.ToList();
 
-            foreach (User user in users)
+            foreach (var user in users)
             {
-                if (Co)
+                if (user.Email == email && user.Password == password)
+                {
+                    Console.WriteLine("Signed In!");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Email or password");
+                }
             }
             
             
