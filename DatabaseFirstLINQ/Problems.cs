@@ -355,7 +355,10 @@ namespace DatabaseFirstLINQ
             // 3. If the user does not succesfully sing in
             // a. Display "Invalid Email or Password"
             // b. Re-prompt the user for credentials
-            
+            var userCart = _context.ShoppingCarts;
+            var userProduct = _context.Products;
+
+
             Console.WriteLine("Enter email: ");
             string email = Console.ReadLine();
 
@@ -363,12 +366,22 @@ namespace DatabaseFirstLINQ
             string password = Console.ReadLine();
 
             var users = _context.Users.ToList();
+            
+            
+
 
             foreach (var user in users)
             {
                 if (user.Email == email && user.Password == password)
                 {
-                    
+                    Console.WriteLine("Would you like to view items in shpping cart? y/n? ");
+                    string answer = Console.ReadLine();
+                    if (answer == "y")
+                    { }
+                    if (answer == "n")
+                    { }
+                    else
+                    { Console.WriteLine("Invalid answer. Please choose y or n"); }
                 }
                 else
                 {
