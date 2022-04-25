@@ -1,7 +1,7 @@
-﻿using System;
-using System.Linq;
+﻿using DatabaseFirstLINQ.Models;
 using Microsoft.EntityFrameworkCore;
-using DatabaseFirstLINQ.Models;
+using System;
+using System.Linq;
 
 namespace DatabaseFirstLINQ
 {
@@ -15,10 +15,10 @@ namespace DatabaseFirstLINQ
         }
         public void RunLINQQueries()
         {
-            ProblemOne();
-            ProblemTwo();
-            ProblemThree();
-            ProblemFour();
+            //ProblemOne();
+            //ProblemTwo();
+            //ProblemThree();
+            //ProblemFour();
             //ProblemFive();
             //ProblemSix();
             //ProblemSeven();
@@ -89,14 +89,18 @@ namespace DatabaseFirstLINQ
         {
             // Write a LINQ query that gets all of the users who registered BEFORE 2016
             // Then print each user's email and registration date to the console.
-
+            var users = _context.Users;
+            var earlyUsers = users.Where(u => u.RegistrationDate < DateTime.Parse("2016-01-01"));
+            foreach(User user in earlyUsers)
+            {
+                Console.WriteLine($"earlyUsers:  {user.Email}  {user.RegistrationDate}");
+            }
         }
 
         private void ProblemSix()
         {
             // Write a LINQ query that gets all of the users who registered AFTER 2016 and BEFORE 2018
             // Then print each user's email and registration date to the console.
-
         }
 
         // <><><><><><><><> R Actions (Read) with Foreign Keys <><><><><><><><><>
